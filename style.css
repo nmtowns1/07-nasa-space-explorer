@@ -1,3 +1,8 @@
+/* ===================================
+   NASA SPACE EXPLORER - CSS STYLES
+   Using NASA Official Brand Colors
+   =================================== */
+
 /* Global reset & box sizing */
 * {
   box-sizing: border-box;
@@ -5,11 +10,13 @@
   padding: 0;
 }
 
-/* Base page styles */
+/* Base page styles - Deep Space Black */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f1f1f1;
+  font-family: 'Arial', sans-serif;
+  background-color: #000000;
+  color: #ffffff;
   padding: 20px;
+  min-height: 100vh;
 }
 
 /* Centered container */
@@ -23,55 +30,103 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 30px 20px;
   margin-bottom: 20px;
+  border-bottom: 2px solid #0b3d91;
 }
 
 h1 {
-  font-family: Verdana, sans-serif;
+  font-family: 'Verdana', sans-serif;
   font-weight: bold;
-  color: #212121;
+  font-size: 2.5rem;
+  color: #ffffff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 /* Logo */
 .logo {
   width: 140px;
-  margin-right: 15px;
+  margin-right: 20px;
+  filter: brightness(1.1);
 }
 
-/* Date‐picker & button row */
+/* Space Fact Section */
+.space-fact {
+  background: linear-gradient(135deg, #0b3d91, #1a5fb4);
+  color: #ffffff;
+  padding: 15px 25px;
+  margin: 0 auto 30px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.1rem;
+  max-width: 900px;
+  box-shadow: 0 4px 15px rgba(11, 61, 145, 0.4);
+  border-left: 4px solid #fc3d21;
+}
+
+/* Date picker & button filters */
 .filters {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
   justify-content: center;
-  margin-bottom: 20px;
+  align-items: center;
+  margin-bottom: 30px;
   padding: 0 20px;
 }
 
-/* Inputs and buttons */
-input[type="date"],
-button {
-  font-family: Arial, sans-serif;
-  font-weight: normal;
-  color: #666;
-  padding: 10px 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+/* Date inputs styling */
+input[type="date"] {
+  font-family: 'Arial', sans-serif;
   font-size: 16px;
-  line-height: 1.4;
+  padding: 12px 15px;
+  border: 2px solid #0b3d91;
+  border-radius: 6px;
+  background-color: #1a1a1a;
+  color: #ffffff;
   width: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-/* Button specific */
-button {
-  background-color: #d3d3d3;
-  color: black;
-  cursor: pointer;
+input[type="date"]:hover {
+  border-color: #fc3d21;
+  background-color: #2a2a2a;
 }
+
+input[type="date"]:focus {
+  outline: none;
+  border-color: #fc3d21;
+  box-shadow: 0 0 10px rgba(252, 61, 33, 0.3);
+}
+
+/* NASA Blue Button */
+button {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 6px;
+  background-color: #0b3d91;
+  color: #ffffff;
+  cursor: pointer;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(11, 61, 145, 0.3);
+}
+
 button:hover {
-  background-color: #bfbfbf;
+  background-color: #fc3d21;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(252, 61, 33, 0.4);
+}
+
+button:active {
+  transform: translateY(0);
 }
 
 /* Stack horizontally on wider screens */
@@ -84,61 +139,262 @@ button:hover {
   input[type="date"],
   button {
     width: auto;
+    min-width: 180px;
   }
 }
 
-/* Gallery flex container */
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
-  justify-content: center;
-}
-
-/* Gallery items */
-.gallery-item {
-  flex: 1 1 100%;  /* full width by default */
-  min-width: 280px;
-  max-width: 500px;
-  background: white;
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Three columns on wider screens */
-@media (min-width: 1000px) {
-  .gallery-item {
-    flex: 0 1 31%;
-  }
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-.gallery-item p {
-  margin-top: 10px;
-  padding: 5px;
-  font-size: 14px;
-}
-
-/* Placeholder content */
-.placeholder {
-  flex: 1 1 100%;
+/* Loading Message */
+.loading-message {
   text-align: center;
-  padding: 40px;
-  color: #666;
+  color: #fc3d21;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 20px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Gallery Grid Container */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Gallery Card */
+.gallery-card {
+  background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+  border: 1px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-card:hover {
+  border-color: #0b3d91;
+  box-shadow: 0 8px 25px rgba(11, 61, 145, 0.5);
+  transform: translateY(-5px);
+}
+
+/* Gallery Image with Zoom Effect */
+.gallery-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.gallery-card:hover .gallery-image {
+  transform: scale(1.1);
+}
+
+/* Video Placeholder */
+.video-placeholder {
+  width: 100%;
+  height: 220px;
+  background: linear-gradient(135deg, #0b3d91, #000000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: #fc3d21;
+  transition: transform 0.4s ease;
+}
+
+.gallery-card:hover .video-placeholder {
+  transform: scale(1.1);
+}
+
+/* Gallery Info Section */
+.gallery-info {
+  padding: 15px;
+}
+
+.gallery-info h3 {
+  color: #ffffff;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.gallery-info p {
+  color: #aaaaaa;
+  font-size: 0.9rem;
+}
+
+/* Placeholder (initial state) */
+.placeholder {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: #aaaaaa;
 }
 
 .placeholder-icon {
-  font-size: 48px;
+  font-size: 60px;
   margin-bottom: 20px;
+  opacity: 0.7;
+}
+
+/* Error Message */
+.error-message {
+  grid-column: 1 / -1;
+  background-color: #fc3d21;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* ===================================
+   MODAL STYLES
+   =================================== */
+
+/* Modal Overlay - Dark Semi-Transparent */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow: auto;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Modal Content Box */
+.modal-content {
+  background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+  margin: 50px auto;
+  padding: 30px;
+  border: 2px solid #0b3d91;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 800px;
+  position: relative;
+  box-shadow: 0 10px 50px rgba(11, 61, 145, 0.6);
+  animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Close Button */
+.close-btn {
+  color: #fc3d21;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  line-height: 1;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: #ffffff;
+  transform: rotate(90deg);
+}
+
+/* Modal Image */
+#modal-image {
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #333;
+}
+
+/* Modal Video */
+#modal-video {
+  width: 100%;
+  height: 450px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: none;
+}
+
+/* Modal Title */
+#modal-title {
+  color: #ffffff;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+  border-bottom: 3px solid #fc3d21;
+  padding-bottom: 10px;
+}
+
+/* Modal Date */
+#modal-date {
+  color: #0b3d91;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Modal Explanation */
+#modal-explanation {
+  color: #cccccc;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .logo {
+    width: 100px;
+  }
+  
+  .modal-content {
+    width: 95%;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  #modal-title {
+    font-size: 1.4rem;
+  }
+  
+  #modal-video {
+    height: 250px;
+  }
 }
